@@ -16,4 +16,8 @@ public class HomePage extends BasePage {
     public String getTextOfMainTitle() {
         return title.getText();
     }
+
+    public String getUrlOfMainPage() {
+        return getDriver().getCurrentUrl();
+    }
 }
