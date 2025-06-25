@@ -8,8 +8,8 @@ public class HomePageTest extends BaseTest{
 
     @Test
     void testMainTitleHomePage() {
-        String actualTitle = new HomePage(getDriver())
-                .getTextOfMainTitle();
+        String actualHeading = new HomePage(getDriver())
+                .getTextOfMainHeading();
 
         Assert.assertEquals(title, "Get good at money");
     }
