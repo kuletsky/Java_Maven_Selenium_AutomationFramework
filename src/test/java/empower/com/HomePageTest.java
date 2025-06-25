@@ -8,7 +8,7 @@ public class HomePageTest extends BaseTest{
 
     @Test
     void testMainTitleHomePage() {
-        String title = new HomePage(getDriver())
+        String actualTitle = new HomePage(getDriver())
                 .getTextOfMainTitle();
 
         Assert.assertEquals(title, "Get good at money");
@@ -20,6 +20,5 @@ public class HomePageTest extends BaseTest{
                 .getUrlOfMainPage();
 
         Assert.assertEquals(url, "https://www.empower.com/");
-
     }
 }
