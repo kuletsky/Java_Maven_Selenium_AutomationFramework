@@ -11,10 +11,10 @@ public class HomePage extends BasePage {
     }
 
     @FindBy(css = "h1")
-    private WebElement title;
+    private WebElement heading;
 
     public String getTextOfMainHeading() {
-        return title.getText();
+        return heading.getText();
     }
 
     public String getUrlOfMainPage() {
