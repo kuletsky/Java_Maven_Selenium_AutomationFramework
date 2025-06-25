@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "h1")
     private WebElement title;
 
-    public String getTextOfMainTitle() {
+    public String getTextOfMainHeading() {
         return title.getText();
     }
 
