@@ -20,11 +20,14 @@ public class HeaderIndividualsTest extends BaseTest {
         OnBoardingPage onBoardingPage = new HeaderIndividualsMenu(getDriver())
                 .clickOpenAccountButton();
 
-        String actualURL = onBoardingPage.getCurrentUrl();
-        String actualHeading = onBoardingPage.getHeadingOfPop();
+        Assert.assertTrue(
+                onBoardingPage.getCurrentUrl().contains("onboarding-v2")
+        );
 
-        Assert.assertTrue(actualURL.contains("onboarding-v2"));
-        Assert.assertEquals(actualHeading, "Please confirm the type of account you want to open");
+        Assert.assertEquals(
+                onBoardingPage.getHeadingOfPop(),
+                "Please confirm the type of account you want to open"
+        );
     }
 
     @Test
