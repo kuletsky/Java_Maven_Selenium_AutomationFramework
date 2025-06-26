@@ -8,10 +8,10 @@ import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
-public class BaseTest {
-    WebDriver driver;
-    WebDriverWait wait5;
-    WebDriverWait wait10;
+public abstract class BaseTest {
+    private WebDriver driver;
+    private WebDriverWait wait5;
+    private WebDriverWait wait10;
 
     @BeforeMethod
     void setup() {

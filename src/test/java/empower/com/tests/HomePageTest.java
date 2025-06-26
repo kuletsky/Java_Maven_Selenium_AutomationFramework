@@ -22,13 +22,8 @@ public class HomePageTest extends BaseTest {
         OnBoardingPage onBoardingPage = new HomePage(getDriver())
                 .clickOpenAccountButton();
 
-        Assert.assertTrue(
-                onBoardingPage.getCurrentUrl().contains("onboarding-v2")
-        );
-
-        Assert.assertEquals(
-                onBoardingPage.getHeadingOfPop(),
-                "Please confirm the type of account you want to open"
-        );
+        Assert.assertTrue(onBoardingPage.getCurrentUrl().contains("onboarding-v2"));
+        Assert.assertEquals(onBoardingPage.getHeadingOfPop(),
+                "Please confirm the type of account you want to open");
     }
 }

@@ -1,7 +1,9 @@
 package empower.com.pages;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -45,6 +47,10 @@ public abstract class BasePage {
 
     protected WebElement waitUntilVisible10(WebElement element) {
         return getWait10().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected List<WebElement> waitUntilVisibleAll10(List<WebElement> elements) {
+        return getWait10().until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public String getCurrentUrl() {
