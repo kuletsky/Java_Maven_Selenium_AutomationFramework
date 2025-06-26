@@ -4,17 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+public class HeaderIndividualsMenu extends BasePage{
 
-public class HomePage extends BasePage {
-    
-    public HomePage(WebDriver driver) {
+    public HeaderIndividualsMenu(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(css = "h1")
     private WebElement heading;
 
-    @FindBy(xpath = "//div[@data-drupal-block-name='hero_header']//span[text()='Open an account']")
+    @FindBy(xpath = "//header//span[text()='Open an account']")
     private WebElement openAccountButton;
 
 
@@ -23,9 +22,8 @@ public class HomePage extends BasePage {
     }
 
     public OnBoardingPage clickOpenAccountButton() {
-         waitUntilClickable10(openAccountButton).click();
+        waitUntilClickable10(openAccountButton).click();
 
         return new OnBoardingPage(getDriver());
     }
-    
 }
