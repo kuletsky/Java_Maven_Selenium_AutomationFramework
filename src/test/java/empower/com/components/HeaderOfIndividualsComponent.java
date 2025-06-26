@@ -1,12 +1,14 @@
-package empower.com.pages;
+package empower.com.components;
 
+import empower.com.pages.BasePage;
+import empower.com.pages.OnBoardingPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HeaderIndividualsMenu extends BasePage{
+public class HeaderOfIndividualsComponent extends BasePage {
 
-    public HeaderIndividualsMenu(WebDriver driver) {
+    public HeaderOfIndividualsComponent(WebDriver driver) {
         super(driver);
     }
 

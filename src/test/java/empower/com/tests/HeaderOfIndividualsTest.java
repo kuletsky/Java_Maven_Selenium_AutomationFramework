@@ -1,6 +1,6 @@
 package empower.com.tests;
 
-import empower.com.pages.HeaderIndividualsMenu;
+import empower.com.components.HeaderOfIndividualsComponent;
 import empower.com.pages.OnBoardingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,11 +13,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class HeaderIndividualsTest extends BaseTest {
+public class HeaderOfIndividualsTest extends BaseTest {
 
     @Test
     public void testOpenAccountButtonFunctionality() {
-        OnBoardingPage onBoardingPage = new HeaderIndividualsMenu(getDriver())
+        OnBoardingPage onBoardingPage = new HeaderOfIndividualsComponent(getDriver())
+                .clickOpenAccountButton();
+
+        Assert.assertTrue(onBoardingPage.getCurrentUrl().contains("onboarding-v2"));
+        Assert.assertEquals(onBoardingPage.getHeadingOfPop(),
+                "Please confirm the type of account you want to open"
+        );
+    }
+
+    @Test
+    public void testLoginButtonFunctionality() {
+        OnBoardingPage onBoardingPage = new HeaderOfIndividualsComponent(getDriver())
                 .clickOpenAccountButton();
 
         Assert.assertTrue(
@@ -28,11 +39,6 @@ public class HeaderIndividualsTest extends BaseTest {
                 onBoardingPage.getHeadingOfPop(),
                 "Please confirm the type of account you want to open"
         );
-    }
-
-    @Test
-    public void testLoginForIndividuals() {
-
     }
 
 
