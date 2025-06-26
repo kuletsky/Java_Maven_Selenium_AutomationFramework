@@ -10,7 +10,6 @@ public class OnBoardingPage extends BasePage{
         super(driver);
     }
 
-
     @FindBy(css = ".h3-alt")
     private WebElement headingOfPopUp;
 
