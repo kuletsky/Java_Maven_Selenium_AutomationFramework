@@ -1,58 +1,7 @@
-package empower.com;
+package empower.com.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-
-import java.time.Duration;
-
-public class BaseTest {
-    WebDriver driver;
-    WebDriverWait wait5;
-    WebDriverWait wait10;
-
-    @BeforeMethod
-    void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.get("https://www.empower.com");
-    }
-
-    @AfterMethod
-    void tearDown() {
-        driver.quit();
-    }
-
-    protected WebDriver getDriver() {
-        return driver;
-    }
-
-    protected WebDriverWait getWait5() {
-        if (wait5 == null) {
-            wait5 = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        }
-
-        return wait5;
-    }
-
-    protected WebDriverWait getWait10() {
-        if (wait10 == null) {
-            wait10 = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        }
-
-        return wait10;
-    }
-}
-
-package com.empower.tests;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import empower.com.pages.HeaderIndividualsMenu;
+import empower.com.pages.OnBoardingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -60,7 +9,32 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class HeaderIndividualsTest extends BaseTest {
+
+    @Test
+    public void testOpenAccountButtonFunctionality() {
+        OnBoardingPage onBoardingPage = new HeaderIndividualsMenu(getDriver())
+                .clickOpenAccountButton();
+
+        String actualURL = onBoardingPage.getCurrentUrl();
+        String actualHeading = onBoardingPage.getHeadingOfPop();
+
+        Assert.assertTrue(actualURL.contains("onboarding-v2"));
+        Assert.assertEquals(actualHeading, "Please confirm the type of account you want to open");
+    }
+
+    @Test
+    public void testLoginForIndividuals() {
+
+    }
+
+
+
+
 
     @Test
     public void testHeaderEmpowerLogo() {
@@ -100,18 +74,18 @@ public class HeaderIndividualsTest extends BaseTest {
     public void testContextualMenuLinksDesktop() {
         getDriver().get("https://www.empower.com/");
 
-        List<String> expectedText = Arrays.asList("Individuals", "Plan Sponsors", "Financial Professionals"); 
+        List<String> expectedText = Arrays.asList("Individuals", "Plan Sponsors", "Financial Professionals");
 
         List<WebElement> actualNavLinks = getWait10().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("a[data-once='nav-main-contextual-link-click']")));
 
         List<String> actualText = actualNavLinks.stream()
-            .map(WebElement::getText)
-            .map(String::trim)
-            .collect(Collectors.toList());
+                .map(WebElement::getText)
+                .map(String::trim)
+                .collect(Collectors.toList());
 
         for (String expected : expectedText) {
             Assert.assertTrue(actualText.contains(expected),
-            "Expected link text not found: " + expected);
+                    "Expected link text not found: " + expected);
         }
     }
 
@@ -124,13 +98,13 @@ public class HeaderIndividualsTest extends BaseTest {
         List<WebElement> actualNavLinks = getWait10().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("button[data-once*='desktopPrimaryNav']")));
 
         List<String> actualText = actualNavLinks.stream()
-            .map(WebElement::getText)
-            .map(String::trim)
-            .collect(Collectors.toList());
+                .map(WebElement::getText)
+                .map(String::trim)
+                .collect(Collectors.toList());
 
         for (String expected : expectedText) {
             Assert.assertTrue(actualText.contains(expected),
-            "Expected link text not found: " + expected);
+                    "Expected link text not found: " + expected);
         }
     }
 

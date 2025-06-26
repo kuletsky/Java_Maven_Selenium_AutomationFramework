@@ -1,4 +1,4 @@
-package com.empower.pages;
+package empower.com.pages;
 
 import java.time.Duration;
 
@@ -30,7 +30,6 @@ public abstract class BasePage {
 
         return wait5;
     }
-
     
     protected WebDriverWait getWait10() {
         if (wait10 == null) {
@@ -41,10 +40,14 @@ public abstract class BasePage {
     }
 
     protected WebElement waitUntilClickable10(WebElement element) {
-        if (wait10 == null) {
-            wait10 = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        }
+        return getWait10().until(ExpectedConditions.elementToBeClickable(element));
+    }
 
-        return wait10.until(ExpectedConditions.elementToBeClickable(element));
+    protected WebElement waitUntilVisible10(WebElement element) {
+        return getWait10().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public String getCurrentUrl() {
+        return getDriver().getCurrentUrl();
     }
 }
