@@ -1,6 +1,8 @@
 package empower.com.tests;
 
+import empower.com.components.BaseHeader;
 import empower.com.components.HeaderIndividualsComponent;
+import empower.com.pages.HomePage;
 import empower.com.pages.LoginCenterPage;
 import empower.com.pages.OnBoardingPage;
 import org.testng.Assert;
@@ -10,6 +12,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class HeaderIndividualsTest extends BaseTest {
+
+    @Test
+    public void testEmpowerLogoFunctionality() {
+        String actualHeading = new BaseHeader(getDriver())
+                .getHeaderIndividuals()
+                .getTextOfMainHeading();
+
+        Assert.assertEquals(actualHeading, "Get good at money");
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.empower.com/");
+    }
 
     @Test
     public void testOpenAccountButtonFunctionality() {
@@ -23,7 +35,7 @@ public class HeaderIndividualsTest extends BaseTest {
 
     @Test
     public void testLoginButtonFunctionality() {
-        LoginCenterPage loginCenterPage = new HeaderIndividualsComponent(getDriver())
+        LoginCenterPage loginCenterPage = new BaseHeader(getDriver())
                 .clickLoginButton();
 
         Assert.assertTrue(loginCenterPage.getCurrentUrl().contains("login-v1"));
@@ -53,20 +65,12 @@ public class HeaderIndividualsTest extends BaseTest {
         Assert.assertEquals(actualPrimaryMenu.size(), 4);
     }
 
+    @Test
+    public void testScrollingHeader() {
+        BaseHeader headerIndividuals = new BaseHeader(getDriver())
+                .scrollToBottom();
 
-//    @Test
-//    public void testScrollingHeader() {
-//        getDriver().get("https://www.empower.com/");
-//
-//        List<WebElement> actualNavLinks = getWait10().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("a[data-once='nav-main-contextual-link-click']")));
-//
-//        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-//        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-//
-//        getWait10().until(ExpectedConditions.visibilityOfElementLocated(By.id("block-empulsify-legal")));
-//
-//        boolean isDisplayedMenu = getWait10().until(ExpectedConditions.invisibilityOfElementLocated(By.className("contextual-nav-row")));
-//
-//        Assert.assertTrue(isDisplayedMenu, "Contextual menu still visible after scroll");
-//    }
+        Assert.assertTrue(headerIndividuals.isHeaderScrolled());
+    }
+
 }

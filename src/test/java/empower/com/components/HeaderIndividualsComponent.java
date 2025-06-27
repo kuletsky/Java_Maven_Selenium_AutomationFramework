@@ -15,9 +15,6 @@ public class HeaderIndividualsComponent extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//header//span[text()='Login']")
-    private WebElement loginButton;
-
     @FindBy(xpath = "//header//span[text()='Open an account']")
     private WebElement openAccountButton;
 
@@ -32,12 +29,6 @@ public class HeaderIndividualsComponent extends BasePage {
         waitUntilClickable10(openAccountButton).click();
 
         return new OnBoardingPage(getDriver());
-    }
-
-    public LoginCenterPage clickLoginButton() {
-        waitUntilClickable10(loginButton).click();
-
-        return new LoginCenterPage(getDriver());
     }
 
     public List<String> getActualContextualMenu() {

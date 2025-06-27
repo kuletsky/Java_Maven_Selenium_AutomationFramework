@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class HomePageTest extends BaseTest {
     
     @Test 
-    public void testMaimHeadingOfHomePage() {
+    public void testMainHeadingHomePage() {
         String actualHeading = new HomePage(getDriver())
             .getTextOfMainHeading();
         
