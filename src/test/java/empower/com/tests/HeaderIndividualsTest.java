@@ -1,8 +1,9 @@
 package empower.com.tests;
 
+import empower.com.common.BaseTest;
 import empower.com.components.BaseHeader;
 import empower.com.components.HeaderIndividualsComponent;
-import empower.com.pages.HomePage;
+import empower.com.pages.IndividualsPage;
 import empower.com.pages.LoginCenterPage;
 import empower.com.pages.OnBoardingPage;
 import org.testng.Assert;
@@ -17,10 +18,37 @@ public class HeaderIndividualsTest extends BaseTest {
     public void testEmpowerLogoFunctionality() {
         String actualHeading = new BaseHeader(getDriver())
                 .getHeaderIndividuals()
+                .clickEmpowerLogo()
                 .getTextOfMainHeading();
 
         Assert.assertEquals(actualHeading, "Get good at money");
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.empower.com/");
+    }
+
+
+
+    @Test
+    public void testEmpowerLogoFunctionality1() {
+        String actualHeading = new IndividualsPage(getDriver())
+                .clickIndividualsMenu()
+                .clickEmpowerLogo()
+                .getTextOfMainHeading();
+
+        Assert.assertEquals(actualHeading, "Get good at money");
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.empower.com/");
+    }
+
+
+
+
+    @Test
+    public void testLoginButtonFunctionality() {
+        LoginCenterPage page = new HeaderIndividualsComponent(getDriver())
+                .clickLoginButton();
+
+        Assert.assertTrue(page.getCurrentUrl().contains("login-v1"));
+        Assert.assertEquals(page.getHeadingPage(),
+                "Where would you like to log in?");
     }
 
     @Test
@@ -31,16 +59,6 @@ public class HeaderIndividualsTest extends BaseTest {
         Assert.assertTrue(onBoardingPage.getCurrentUrl().contains("onboarding-v2"));
         Assert.assertEquals(onBoardingPage.getHeadingOfPop(),
                 "Please confirm the type of account you want to open");
-    }
-
-    @Test
-    public void testLoginButtonFunctionality() {
-        LoginCenterPage loginCenterPage = new BaseHeader(getDriver())
-                .clickLoginButton();
-
-        Assert.assertTrue(loginCenterPage.getCurrentUrl().contains("login-v1"));
-        Assert.assertEquals(loginCenterPage.getHeadingPage(),
-                "Where would you like to log in?");
     }
 
     @Test

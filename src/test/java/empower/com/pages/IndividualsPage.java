@@ -1,13 +1,14 @@
 package empower.com.pages;
 
+import empower.com.common.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class HomePage extends BasePage {
+public class IndividualsPage extends BasePage {
     
-    public HomePage(WebDriver driver) {
+    public IndividualsPage(WebDriver driver) {
         super(driver);
     }
 
