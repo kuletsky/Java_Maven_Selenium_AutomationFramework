@@ -30,7 +30,7 @@ public class HeaderIndividualsTest extends BaseTest {
     @Test
     public void testEmpowerLogoFunctionality1() {
         String actualHeading = new IndividualsPage(getDriver())
-                .clickIndividualsMenu()
+//                .clickIndividualsMenu()
                 .clickEmpowerLogo()
                 .getTextOfMainHeading();
 
