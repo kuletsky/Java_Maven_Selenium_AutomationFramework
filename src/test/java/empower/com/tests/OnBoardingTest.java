@@ -1,11 +1,8 @@
 package empower.com.tests;
 
-import empower.com.pages.HomePage;
-import empower.com.pages.OnBoardingPage;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import empower.com.common.BaseTest;
 
-public class OnBoardingTest extends BaseTest{
+public class OnBoardingTest extends BaseTest {
 
 
 }

@@ -5,16 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginCenterPage extends BasePage {
+public class PlanServiceCenterPage extends BasePage {
 
-    public LoginCenterPage(WebDriver driver) {
+    public PlanServiceCenterPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = "h1")
+    @FindBy(css = ".site-tagline")
     private WebElement headingPage;
+
+    @FindBy(xpath = "//header//span[text()='Login']")
+    private WebElement loginButton;
 
     public String getHeadingPage() {
         return waitUntilVisible10(headingPage).getText();
     }
+
 }

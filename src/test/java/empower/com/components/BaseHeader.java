@@ -1,8 +1,7 @@
 package empower.com.components;
 
-import empower.com.pages.BasePage;
-import empower.com.pages.HomePage;
-import empower.com.pages.LoginCenterPage;
+import empower.com.common.BasePage;
+import empower.com.pages.IndividualsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,8 +17,6 @@ public class BaseHeader extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//header//span[text()='Login']")
-    private WebElement loginButton;
 
     @FindBy(css = "footer")
     private WebElement footer;
@@ -30,23 +27,26 @@ public class BaseHeader extends BasePage {
     @FindBy(xpath = "//*[text()='Individuals']")
     private WebElement individualsMenu;
 
+    @FindBy(xpath = "//*[text()='Plan Sponsors']")
+    private WebElement PlanSponsorsMenu;
 
-    public LoginCenterPage clickLoginButton() {
-        waitUntilClickable10(loginButton).click();
 
-        return new LoginCenterPage(getDriver());
+    public IndividualsPage clickEmpowerLogo() {
+        empowerLogo.click();
+
+        return new IndividualsPage(getDriver());
     }
 
-    public BaseHeader clickEmpowerLogo() {
-        waitUntilClickable10(empowerLogo).click();
-
-        return this;
-    }
-
-    public HomePage getHeaderIndividuals() {
+    public HeaderIndividualsComponent getHeaderIndividuals() {
         waitUntilClickable10(individualsMenu).click();
 
-        return new HomePage(getDriver());
+        return new HeaderIndividualsComponent(getDriver());
+    }
+
+    public HeaderPlanSponsorsComponent getHeaderPlanSponsors() {
+        waitUntilClickable10(PlanSponsorsMenu).click();
+
+        return new HeaderPlanSponsorsComponent(getDriver());
     }
 
     public BaseHeader scrollToBottom() {
